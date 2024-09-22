@@ -1,0 +1,4 @@
+com\Hotel\Hotel\Model\HotelInfo.class
+com\Hotel\Hotel\Controller\HotelController.class
+com\Hotel\Hotel\Repository\HotelRepository.class
+com\Hotel\Hotel\HotelApplication.class

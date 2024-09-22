@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+            background-image: linear-gradient(to bottom, #f9f9f9, #fff);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            background-color: #ff69b4;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        a:hover {
+            color: #3e8e41;
+        }
+       /* @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Content</h1>
+        <form id="productForm">
+            <label for="name">Dish Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="price">Dish Price:</label>
+            <input type="text" id="price" name="price" required>
+            <label for="wname">Waiter Name:</label>
+            <input type="text" id="wname" name="wname" required>
+            <button type="submit">Add Content</button>
+        </form>
+        <a href="Fetchproduct.html">Back to Product List</a>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Collect form data
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const wname = document.getElementById('wname').value;
+
+            // Send POST request
+            fetch(`http://localhost:8010/dapi/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    dishName: name,
+                    dishPrice: price,
+                    waiterName: wname
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Content added:', data);
+                alert('Content added successfully!');
+                // Optionally redirect to the product list page
+                window.location.href = 'FetchHotel.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

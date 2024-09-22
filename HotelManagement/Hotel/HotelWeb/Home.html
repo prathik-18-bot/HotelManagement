@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System - Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-image:url('hotelimg.jpg');
+            background-size:cover;
+            height: 75vh;
+        }
+        .container {
+
+            font-family:'Times New Roman', Times, serif;
+            max-width: 600px;
+            height: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color:white;
+            border: 2px solid red;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px; /* Add border-radius to change container shape */
+            display: flex; /* Add display: flex to center buttons vertically */
+            flex-direction: column; /* Add flex-direction: column to stack buttons vertically */
+            justify-content: center; /* Add justify-content: center to center buttons horizontally */
+            align-items: center; /* Add align-items: center to center buttons horizontally */
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color:lightseagreen;
+            color:black;
+        }
+        button:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;"> HOTEL MANAGEMENT SYSTEM</h2>
+        <button onclick="window.location.href='FetchHotel.html';">Selected Dishes<i class="fas fa-utensils"></i></button>
+        <button onclick="window.location.href='AddHotel.html';">Add New Dishes <i class="fas fa-plus"></i></button>
+    </div>
+</body>
+</html>
